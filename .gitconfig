@@ -1,0 +1,13 @@
+[user]
+	name = forstezt
+	email = zforster@hotmail.com
+[push]
+	default = matching
+[branch]
+	autosetuprebase = always
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[core]
+	editor = vim
