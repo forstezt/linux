@@ -90,7 +90,3 @@ do
             break;;
     esac
 done	
-
-
-#create config files
-#TODO: set up .hgrc, .bashrc, .vimrc, tmux key bindings
