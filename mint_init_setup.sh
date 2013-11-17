@@ -63,7 +63,6 @@ do
     esac
 done	
 
-#TO MOUNT THESE DRIVES, RUN "sudo mount -a"
 echo "Map UWEC drives?"
 select yn in "Yes" "No"
 do
