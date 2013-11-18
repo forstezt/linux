@@ -59,9 +59,7 @@ do
             #wget $download_url -O 'current_eclipse.tar.gz'
             #tar -zxvf current_eclipse.tar.gz
             #rm current_eclipse.tar.gz
-            #filename=$(ls | grep -o -e 'eclipse.*')
-            #echo $filename;;
-            #sudo mv $filename /opt
+            #sudo mv eclipse /opt
             #cd /usr/local/bin
             #sudo ln -s /opt/eclipse/eclipse
             #cp /opt/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
