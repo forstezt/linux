@@ -2,7 +2,7 @@
 
 #install basic programs and versioning systems
 echo "Choose something to install."
-select prgm in "Vim" "Tmux" "Git" "Mercurial" "Svn" "Oracle Java" "Eclipse" "Google Chrome" "None"
+select prgm in "Vim" "Tmux" "Git" "Mercurial" "Svn" "Oracle Java" "Eclipse" "Google Chrome" "Irssi" "None"
 do
     case $prgm in
         'Vim') 
@@ -35,7 +35,7 @@ do
             echo "[ui]" >> ~/.hgrc
             echo "username = Zach Forster forstezt@uwec.edu" >> ~/.hgrc;;
 
-        'Svn')
+        'Svn') #TODO: get the right package
             sudo apt-get install svn;;
 
         'Oracle Java')
@@ -52,7 +52,7 @@ do
             sudo update-alternatives --set java /opt/java/$filename/bin/java
             rm ~/Downloads/current_java.tar.gz;;
 
-    'Eclipse') #TODO: Get this to work!
+        'Eclipse')
             cd ~/Downloads
             file_url=$(wget -q -O- http://eclipse.org/downloads/?osType=linux | grep -o -e '/technology/epp/downloads/release/.*/eclipse-standard-.*-linux-gtk-x86_64.tar.gz')
             wget http://download.eclipse.org$file_url -O 'current_eclipse.tar.gz'
@@ -68,6 +68,9 @@ do
             wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
             sudo dpkg -i google-chrome*.deb
             rm ~/Downloads/google-chrome*.deb*;; 
+
+	'Irssi')
+            sudo apt-get install irssi;;
 
         'None')
             break;;
