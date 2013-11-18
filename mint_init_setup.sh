@@ -2,13 +2,13 @@
 
 #install basic programs and versioning systems
 echo "Choose something to install."
-select prgm in "Vim" "Tmux" "Git" "Mercurial" "Svn" "Oracle Java" "Google Chrome" "None"
+select prgm in "Vim" "Tmux" "Git" "Mercurial" "Svn" "Oracle Java" "Eclipse" "Google Chrome" "None"
 do
     case $prgm in
-        Vim) 
+        'Vim') 
             sudo apt-get install vim;;
 
-        Tmux)
+        'Tmux')
             sudo apt-get install tmux
 
             #if the .tmux.conf file doesn't exist, create it
@@ -17,15 +17,15 @@ do
                     touch ~/.tmux.conf       
             fi
             echo "unbind C-b" >> ~/.tmux.conf
-            echo "set -g prefix C-a" >> ~/.tmux.conf
+            echo "set -g prefix C-a" >> ~/.tmux.conf;;
 
-        Git)
+        'Git')
             sudo apt-get install git
             git config --global user.email "zforster@hotmail.com"
             git config --global user.name "Zach"
-	    git config color.ui true;;
+            git config color.ui true;;
 
-        Mercurial)
+        'Mercurial')
             sudo apt-get install mercurial
             #if the .hgrc file doesn't exist, create it
             if [ ! -f ~/.hgrc ]
@@ -35,7 +35,7 @@ do
             echo "[ui]" >> ~/.hgrc
             echo "username = Zach Forster forstezt@uwec.edu" >> ~/.hgrc;;
 
-        Svn)
+        'Svn')
             sudo apt-get install svn;;
 
         'Oracle Java')
@@ -52,6 +52,20 @@ do
             sudo update-alternatives --set java /opt/java/$filename/bin/java
             rm ~/Downloads/current_java.tar.gz;;
 
+    'Eclipse') #TODO: Get this to work!
+            #cd ~/Downloads
+            #site_url=$(wget -q -O- http://eclipse.org/downloads/?osType=linux | grep -o -e 'www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/.*/eclipse-standard-.*-linux-gtk-x86_64.tar.gz')
+            #download_url=$(wget -q -0- $site_url | grep -o -e '$site_url&mirror_id=.*')
+            #wget $download_url -O 'current_eclipse.tar.gz'
+            #tar -zxvf current_eclipse.tar.gz
+            #rm current_eclipse.tar.gz
+            #filename=$(ls | grep -o -e 'eclipse.*')
+            #echo $filename;;
+            #sudo mv $filename /opt
+            #cd /usr/local/bin
+            #sudo ln -s /opt/eclipse/eclipse
+            #cp /opt/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
+            ;;
         'Google Chrome')
             cd ~/Downloads
             sudo apt-get install libxss1
@@ -59,10 +73,10 @@ do
             sudo dpkg -i google-chrome*.deb
             rm ~/Downloads/google-chrome*.deb*;; 
 
-        None)
+        'None')
             break;;
     esac
-done	
+done    
 
 echo "Map UWEC drives?"
 select yn in "Yes" "No"
@@ -90,4 +104,4 @@ do
         No)
             break;;
     esac
-done	
+done    
