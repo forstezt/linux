@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#exit if the script is not run with sudo
+if [ "$(id -u)" != "0" ]; then
+    echo "Please run the script with sudo or login as root."
+    exit 1
+fi
+
 #install basic programs and versioning systems
 echo "Choose something to install."
 select prgm in "Vim" "Tmux" "Git" "Mercurial" "Svn" "Oracle Java" "Eclipse" "Google Chrome" "Irssi" "None"
@@ -36,7 +42,7 @@ do
             echo "username = Zach Forster forstezt@uwec.edu" >> ~/.hgrc;;
 
         'Svn') #TODO: get the right package
-            sudo apt-get install svn;;
+            sudo apt-get install subversion;;
 
         'Oracle Java')
             sudo apt-get update && apt-get purge openjdk-\*
@@ -61,7 +67,7 @@ do
             sudo mv eclipse /opt
             cd /usr/local/bin
             sudo ln -s /opt/eclipse/eclipse
-            cp /opt/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm;;
+            sudo cp /opt/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm;;
         'Google Chrome')
             cd ~/Downloads
             sudo apt-get install libxss1
