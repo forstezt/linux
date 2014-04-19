@@ -112,11 +112,6 @@ if [ -f "$HOME/.bash_ps1" ]; then
  . "$HOME/.bash_ps1"  
  fi 
 
-function cd()
-{
- builtin cd "$*" && ls
-}
-
 #This line will tell the Go installer where to place the source code before compilation
 export GOROOT=$HOME/gosource
 
