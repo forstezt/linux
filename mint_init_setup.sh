@@ -118,8 +118,8 @@ do
             #enter mounting information into /etc/fstab
             sudo echo "//students.uwec.edu/forstezt\$ /media/H cifs credentials=/home/forstezt/.uwec_credentials,gid=1000,uid=1000,iocharset=utf8,sec=ntlm 0 0" >> /etc/fstab
             echo "added line to /etc/fstab to map H: drive"
-            sudo echo "//students.uwec.edu/deptdir /media/W cifs credentials=/home/forstezt/.uwec_credentials,gid=1000,uid=1000,iocharset=utf8,sec=ntlm 0 0" >> /etc/fstab;;
-            echo "added line to /etc/fstab to map W: drive"
+            sudo echo "//students.uwec.edu/deptdir /media/W cifs credentials=/home/forstezt/.uwec_credentials,gid=1000,uid=1000,iocharset=utf8,sec=ntlm 0 0" >> /etc/fstab
+            echo "added line to /etc/fstab to map W: drive";;
 
         No)
             break;;
