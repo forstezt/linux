@@ -12,6 +12,6 @@ for pkgToRemove in $(echo $pkgToRemoveListFull); do
     fi
 done
 
-echo $pkgToRemoveList
+#echo $pkgToRemoveList
 
-#sudo apt-get --purge remove $pkgToRemoveList
+sudo apt-get --purge remove $pkgToRemoveList

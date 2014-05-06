@@ -45,18 +45,10 @@ do
             sudo apt-get install subversion;;
 
         'Oracle Java')
-            sudo apt-get update && apt-get purge openjdk-\*
-            sudo apt-get autoremove && sudo apt-get clean
-            cd ~/Downloads
-            url=$(wget -q -O- http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html | grep -o -e 'http://download.oracle.com/otn-pub/java/jdk/.*-linux-x64.tar.gz')
-            wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" $url -O 'current_java.tar.gz'
-            tar -zxvf current_java.tar.gz
-            filename=$(ls | grep -o -e 'jdk.*')
-            sudo mkdir -p /opt/java
-            sudo mv $filename /opt/java 
-            sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/$filename/bin/java" 1
-            sudo update-alternatives --set java /opt/java/$filename/bin/java
-            rm ~/Downloads/current_java.tar.gz;;
+            sudo add-apt-repository ppa:webupd8team/java
+            sudo apt-get update
+            sudo apt-get install oracle-java8-installer
+            sudo apt-get install oracle-java8-set-default;;
 
         'Eclipse')
             cd ~/Downloads
@@ -88,14 +80,17 @@ select yn in "Yes" "No"
 do
     case $yn in
         Yes)
+            sudo apt-get install cifs-utils
+
             #if the .uwec_credentials file doesn't exits, create it
             if [ ! -f ~/.uwec_credentials ]; then
                 touch ~/.uwec_credentials       
                 echo "~/.uwec_credentials file created"
 
                 #enter credentials in the .uwec_credentials file
-                echo "username=UWEC\\forstezt" >> ~/.uwec_credentials
+                echo "username=forstezt" >> ~/.uwec_credentials
                 echo "password=@FTZ#coconutpie" >> ~/.uwec_credentials
+                echo "domain=UWEC" >> ~/.uwec_credentials
                 echo "uwec username and password written to file"
             fi
         
